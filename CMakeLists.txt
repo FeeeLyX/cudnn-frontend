@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.16)
 
 project(cudnn_frontend VERSION 0.9)
+
+set(CUDA_TOOLKIT_ROOT_DIR "/usr/local/cuda")
 
 option(CUDNN_FRONTEND_BUILD_SAMPLES "Defines if samples are built or not." ON)
 

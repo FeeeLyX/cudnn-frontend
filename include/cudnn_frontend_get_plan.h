@@ -35,7 +35,10 @@ EngineConfigGenerator::cudnnGetPlan(cudnnHandle_t handle, OperationGraph & opGra
 #ifndef NV_CUDNN_DISABLE_EXCEPTION
         try {
 #endif
-            plans.push_back(ExecutionPlanBuilder().setHandle(handle).setEngineConfig(engine_config, opGraph.getTag()).build());
+            plans.push_back(ExecutionPlanBuilder()
+                .setHandle(handle)
+                .setEngineConfig(engine_config, opGraph.getTag())
+                .build());
             getLogger() << "[cudnn_frontend] Added plan " << plans.back().getTag() << " " << to_string(plans.back().get_status()) << std::endl;
 #ifndef NV_CUDNN_DISABLE_EXCEPTION
         } catch (cudnnException &e) {

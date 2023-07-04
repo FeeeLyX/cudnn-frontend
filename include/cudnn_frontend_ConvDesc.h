@@ -66,22 +66,25 @@ class ConvDesc_v8 : public BackendDescriptor {
             ss << sep << padLower[i];
             sep = ',';
         }
+        sep = ' ';
         ss << " ] PadUpper [";
         for (auto i = 0; i < nDims; i++) {
             ss << sep << padUpper[i];
             sep = ',';
         }
+        sep = ' ';
         ss << " ] Dilation [";
         for (auto i = 0; i < nDims; i++) {
             ss << sep << dilation[i];
             sep = ',';
         }
+        sep = ' ';
         ss << " ] Stride [";
         for (auto i = 0; i < nDims; i++) {
             ss << sep << stride[i];
             sep = ',';
         }
-        ss << "]";
+        ss << " ]";
         return ss.str();
     }
 

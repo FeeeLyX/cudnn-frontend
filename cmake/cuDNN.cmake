@@ -1,5 +1,7 @@
 add_library(CUDNN::cudnn_all INTERFACE IMPORTED)
 
+set(CUDAToolkit_INCLUDE_DIRS "/usr/local/cuda/include")
+
 find_path(
     CUDNN_INCLUDE_DIR cudnn.h
     HINTS $ENV{CUDNN_PATH} ${CUDNN_PATH} ${CUDAToolkit_INCLUDE_DIRS}

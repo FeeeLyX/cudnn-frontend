@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.16)
 
 Include(FetchContent)
 
 # Find the cuda compiler
-find_package(CUDAToolkit)
+set(CUDA_TOOLKIT_ROOT_DIR "/usr/local/cuda")
 
 # Fetch and build catch2
 FetchContent_Declare(
@@ -56,16 +56,18 @@ else()
         -Wno-unused-function
     )
 endif()
-target_include_directories(samples PRIVATE "resnet_block/include")
+target_include_directories(samples PRIVATE
+    "../include"
+    ${CUDA_TOOLKIT_ROOT_DIR}/include
+    "resnet_block/include")
 
-target_link_libraries(
-    samples
-    cudnn_frontend
+target_link_libraries(samples
+    # cudnn_frontend
     Catch2::Catch2WithMain
 
-    CUDA::cudart
-    CUDA::cublas
-    CUDA::nvrtc
+    /usr/local/cuda/lib64/libcudart.so
+    /usr/local/cuda/lib64/libcublas.so
+    /usr/local/cuda/lib64/libnvrtc.so
     
     CUDNN::cudnn_all
 )

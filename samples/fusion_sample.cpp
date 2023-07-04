@@ -78,7 +78,10 @@ get_execplan_from_heuristics_else_fall_back(cudnn_frontend::OperationGraph&& opG
         std::cout << std::endl;
         std::cout << "Filter config list has " << filtered_configs.size() << " configurations " << std::endl;
 
-        return cudnn_frontend::ExecutionPlanBuilder().setHandle(handle_).setEngineConfig(filtered_configs[0], opGraph.getTag()).build();
+        return cudnn_frontend::ExecutionPlanBuilder()
+            .setHandle(handle_)
+            .setEngineConfig(filtered_configs[0], opGraph.getTag())
+            .build();
     }
 }
 
